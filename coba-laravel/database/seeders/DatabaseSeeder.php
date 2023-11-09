@@ -37,6 +37,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Category::create([
+            'name' => 'Web Design',
+            'slug' => 'web-design '
+        ]);
+
+        \App\Models\Category::create([
             'name' => 'Personal',
             'slug' => 'personal'
         ]);
