@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable; // Import Sluggable
+
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable; // Use Sluggable
 
     //protected $fillable = ['title','excerpt','body'];
 
@@ -51,4 +53,15 @@ class Post extends Model
     {
         return 'slug';
     }
+
+    public function sluggable(): array // Implementasi Sluggable
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
+
 }
+
