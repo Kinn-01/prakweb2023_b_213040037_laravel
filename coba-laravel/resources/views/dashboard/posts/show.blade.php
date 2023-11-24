@@ -8,8 +8,15 @@
             <h1 class="mb-3">{{ $post->title }}</h1>
            
             <a href="/dashboard/posts" class="btn btn-success"><i class="bi bi-box-arrow-in-left"></i> Back To All My Posts</a>
-            <a href="" class="btn btn-warning"><i class="bi bi-pencil"></i> Edit</a>
-            <a href="" class="btn btn-danger"><i class="bi bi-x-circle"></i></i> Delete</a>
+            <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning"><i class="bi bi-pencil"></i> Edit</a>
+
+            <form action="/dashboard/posts/{{ $post->slug }}" method="POST" class="d-inline">
+                @method('delete')
+                @csrf
+                <button class="btn btn-danger" onclick="return confirm('Are You Sure!!')"><i class="bi bi-x-circle"></i> Delete</button>
+                <input type="hidden" name="slug" value="{{ $post->slug }}" >
+              
+            </form>
 
             <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" alt="{{ $post->category->name }}" class="img-fluid mt-3">
 
